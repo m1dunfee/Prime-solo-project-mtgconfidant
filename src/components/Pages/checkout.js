@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../App/App.css'
+import cards from "./img/cards.jpg"
 
 class Checkout extends Component {
 
@@ -32,62 +33,56 @@ class Checkout extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="card">
-                    <div className="card-header">
-                        <div className="row">
-                            <div className="col">
-                                Name:
-                            </div>
-                            <div className="col">
-                                Set:
-                            </div>
-                            <div className="col">
-                                Price:
-                            </div>
-                            <div className="col">
-                                Quantity:
-                            </div>
-                            <div className="col">
-                                Remove:
-                            </div>
-                        </div>
-                    </div>
+            <table className="table table-hover table-dark">
+                    <thead >
+                            <tr>
+                                <th scope="col">Card Art:</th>
+                                <th scope="col">Name:</th>
+                                <th scope="col">Set:</th>
+                                <th scope="col">Price:</th>
+                                <th scope="col">Quantity:</th>
+                                <th scope="col">Remove:</th>
+                            </tr>
+                    </thead>
 
-
+                    <tbody>
                     {/* {JSON.stringify(this.props.reduxState.CartReducer)} */}
                     {this.props.reduxState.CartReducer.map((card) => {
                         return (
-                                <div className="row p-1">
-                                    <div className="col">
+                                <tr>
+                                    <td>
+                                            <img className="w-25" src={cards} ></img>
+                                    </td>
+                                    <td>
                                         {card.card_name}
-                                    </div>
-                                    <div className="col">
+                                    </td>
+                                    <td>
                                         {card.set}
-                                    </div>
-                                    <div className="col">
+                                    </td>
+                                    <td>
                                         {/* {card.price} */}
-                                    </div>
-                                    <div className="col">
+                                        n/a
+                                    </td>
+                                    <td>
                                         {card.quantity}
-                                    </div>
-                                    <div className="col">
-                                        {/* needs to be corrected */}
+                                    </td>
+                                    <td>
+                                        {/* needs to refresh the dom */}
                                         <button className="btn btn-danger btn-sm" onClick={() => { this.removeFromCart(card.id) }}>Remove</button>
-                                    </div>
-                            </div>)
+                                    </td>
+                            </tr>)
                     })}
 
-
-                    <div>
+</tbody>
+                    <div >
                         {this.props.reduxState.user.id ?
                             <button className="btn btn-success" onClick={this.checkoutOrder}>Check out</button>
                             :
-                            <Link to='/home'><button>login to continue</button></Link>
+                            <Link to='/home'><button className="btn btn-success" >login to continue</button></Link>
                         }
                     </div>
-                </div>
-            </div>
+                
+            </table>
         )
     }
 }

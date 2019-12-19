@@ -77,26 +77,27 @@ class CardDetails extends Component {
     render() {
         return (
             <>
-                <div className="row " key={this.props.card.id}>
+                <tr key={this.props.card.id}>
 
                     {/* card art */}
 
-                    <div className="col" key={this.props.card.img_path}>
+                    <td  key={this.props.card.img_path}>
                             <img className="w-25" src={cards} ></img>
-                    </div>
+                    </td>
                     {/* card name */}
 
-                    <div className="col" key={this.props.card.card_name}>
-                        {this.props.card.card_name}</div>
+                    <td  key={this.props.card.card_name}>
+                        {this.props.card.card_name}
+                    </td>
 
                     {/* card set */}
-                    <div className="col" key={this.props.card.set}>
+                    <td  key={this.props.card.set}>
                         {this.props.card.set}
-                    </div>
+                    </td>
                     {/*card price  */}
-                    <div>
+                    <td>
                         n/a
-                            </div>
+                     </td>
                     {/* in-stock*/}
                     {/* <div className="col" key = {this.props.card.in_stock}>
                             {this.props.user.admin ?
@@ -111,14 +112,14 @@ class CardDetails extends Component {
                     {/* Cart Quantity */}
 
 
-                    <div className="col">
+                    <td >
                         <input onChange={(e) => { this.onChange(e) }} placeholder='Add to Cart'></input>
-                    </div>
+                    </td>
 
                     {/* add to cart */}
-                    <div className="col">
+                    <td>
                         <button className="btn btn-success" onClick={() => { this.addToCart(this.props.card) }}>add to cart!</button>
-                    </div>
+                    </td>
 
                     {/* somethings messed up with this code block. I think it has spmething to do with user auth */}
                     {/* <div >
@@ -132,7 +133,7 @@ class CardDetails extends Component {
                             </div> */}
 
 
-                </div>
+                </tr>
             </>
         )
     }
